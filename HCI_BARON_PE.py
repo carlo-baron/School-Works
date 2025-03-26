@@ -46,6 +46,7 @@ class SearchableComboBox():
         selected_index = self.listbox.curselection()
         if selected_index:
             selected_option = self.listbox.get(selected_index)
+            change_customer_details(selected_option)
             self.entry.delete(0, END)
             self.entry.insert(0, selected_option)
 
@@ -64,6 +65,11 @@ class SearchableComboBox():
 #region FUNCTIONS
 def incomplete_feature():
     messagebox.showerror("Error!", "Incomplete Feature")
+def change_customer_details(customer):
+    name.config(text=customer)
+    store_points.config(text=customers[customer]["Store"])
+    reward_points.config(text=customers[customer]["Reward"])
+    visit_points.config(text=customers[customer]["Visit"])
 #endregion
 
 #region APP
@@ -71,14 +77,27 @@ root = Tk()
 root.title("POS System")
 root.geometry("1325x1080")
 
+#region VALUES
+customers = {
+    "Jane Doe" : {"Store" : 0, "Reward" : 4200, "Visit" : 19},
+    "John Smith" : {"Store" : 1, "Reward" : 3200, "Visit" : 15},
+    "Alice Johnson" : {"Store" : 2, "Reward" : 5600, "Visit" : 22},
+    "Bob Brown" : {"Store" : 1, "Reward" : 2000, "Visit" : 10},
+    "Mary Davis" : {"Store" : 3, "Reward" : 8000, "Visit" : 30},
+    "James Wilson" : {"Store" : 0, "Reward" : 1500, "Visit" : 5},
+}
+
+initial_customer = list(customers.keys())[0]
+#endregion
+
 #region LEFT SIDE
-customer_entry = Entry(root, width=26, font=("impact"))
-options = ["Apple", "Banana", "Cherry", "Date", "Grapes", "Kiwi", "Mango", "Orange", "Peach", "Pear"]
-SearchableComboBox(options)
+options = customers.keys()
+box = SearchableComboBox(options)
+
 
 product_entry = Entry(root, width=26, font=("impact"))
 
-name = Label(root, text="Jane Doe", font=("impact", 20))
+name = Label(root, text=f"{initial_customer}", font=("impact", 20))
 loyalty = Label(root, text="Loyalty program", font=("Arial", 8))
 
 store = Label(root, text="STORE", font=("impact", 10), fg="#808080")
