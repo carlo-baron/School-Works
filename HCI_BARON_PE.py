@@ -108,7 +108,7 @@ store_points = Label(root, text="0.00", font=("impact", 20))
 reward_points = Label(root, text="4200", font=("impact", 20))
 visit_points = Label(root, text="19", font=("impact", 20))
 
-left_button = Button(root, width=29, background="yellow", text="ID", font=("impact", 12))
+left_button = Button(root, width=29, background="yellow", text="ID", font=("impact", 12), command=incomplete_feature)
 right_button = Button(root, width=29, background="#b7e2f3", text="PURCHASES", font=("impact"), command=incomplete_feature)
 
 row1_bg = Label(root, background="#808080", width=70, height=2)
