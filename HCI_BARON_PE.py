@@ -68,7 +68,9 @@ normFont = ("Arial", 12)
 #region COL 1
 option = NButton(root, text="+",width=110, height=97, background="#a5c536", bd=0, font=bigFont).place(x=515, y=10)
 
-option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=515, y=110)
+option = Frame(root, width=110, height=97, background="#b7e2f3", bd=0)
+option.place(x=515, y=110)
+option.bind("<Button-1>", lambda e: print("nice"))
 img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=518, y=113)
 img_box.bind("<Button-1>", lambda e: print("Nice"))
@@ -90,7 +92,9 @@ option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="L
 #region COL 2
 option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="Shirts", font=normFont).place(x=630, y=10)
 
-option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=630, y=110)
+option = Frame(root, width=110, height=97, background="#b7e2f3", bd=0)
+option.place(x=630, y=110)
+option.bind("<Button-1>", lambda e: print("nice"))
 img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=633, y=113)
 img_box.bind("<Button-1>", lambda e: print("nice"))
@@ -112,7 +116,9 @@ option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="C
 #region COL 3
 option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="Dresses", font=normFont).place(x=745, y=10)
 
-option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=745, y=110)
+option = Frame(root, width=110, height=97, background="#b7e2f3", bd=0)
+option.place(x=745, y=110)
+option.bind("<Button-1>", lambda e: print("nice"))
 img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=749, y=113)
 img_box.bind("<Button-1>", lambda e: print("nice"))
@@ -134,7 +140,9 @@ option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="P
 #region COL 4
 option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="Jeans", font=normFont).place(x=860, y=10)
 
-option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=860, y=110)
+option = Frame(root, width=110, height=97, background="#b7e2f3", bd=0)
+option.place(x=860, y=110)
+option.bind("<Button-1>", lambda e: print("nice"))
 img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=863, y=113)
 img_box.bind("<Button-1>", lambda e: print("nice"))
@@ -156,7 +164,9 @@ option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="C
 #region COL 5
 option = NButton(root, width=110, height=97, background="#499bc0", bd=0, borderwidth=0).place(x=975, y=10)
 
-option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=975, y=110)
+option = Frame(root, width=110, height=97, background="#b7e2f3", bd=0)
+option.place(x=975, y=110)
+option.bind("<Button-1>", lambda e: print("nice"))
 img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=978, y=113)
 img_box.bind("<Button-1>", lambda e: print("nice"))
@@ -179,7 +189,9 @@ option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="R
 #region COL 6
 option = NButton(root, width=110, height=97, background="#499bc0", bd=0).place(x=1090, y=10)
 
-option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=1090, y=110)
+option = Frame(root, width=110, height=97, background="#b7e2f3", bd=0)
+option.place(x=1090, y=110)
+option.bind("<Button-1>", lambda e: print("nice"))
 img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=1093, y=113)
 img_box.bind("<Button-1>", lambda e: print("nice"))
@@ -201,7 +213,9 @@ option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="A
 #region COL 7
 option = NButton(root, width=110, height=97, background="#499bc0", bd=0).place(x=1205, y=10)
 
-option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=1205, y=110)
+option = Frame(root, width=110, height=97, background="#b7e2f3", bd=0)
+option.place(x=1205, y=110)
+option.bind("<Button-1>", lambda e: print("nice"))
 img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=1208, y=113)
 img_box.bind("<Button-1>", lambda e: print("nice"))
@@ -221,16 +235,12 @@ option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x
 #endregion
 
 #region Botton Options
-people = Label(root, width=15, height=7, background="#f4c343").place(x=515, y=710)
-text = Label(root, text="PEOPLE", font=("impact", 15), background="#f4c343").place(x=540, y=748)
-lock = Label(root, width=15, height=7, background="#f4c343").place(x=630, y=710)
-text = Label(root, text="LOCK", font=("impact", 15), background="#f4c343").place(x=661, y=748)
-sale = Label(root, width=31, height=7, background="#ea5255").place(x=745, y=710)
-sale = Label(root, width=30, height=7, background="#ea5255").place(x=755, y=710)
-text = Label(root, text="DELETE", font=("impact", 15), background="#ea5255").place(x=830, y=748)
-pay = Label(root, width=45, height=7, background="#a5c536").place(x=975, y=710)
-pay = Label(root, width=45, height=7, background="#a5c536").place(x=995, y=710)
-text = Label(root, text="PAY", font=("impact", 15), background="#a5c536").place(x=1125, y=748)
+botFont = ("impact", 18)
+
+people = NButton(root, width=110, height=111, background="#f4c343", bd=0, text="PEOPLE", font=botFont).place(x=515, y=710)
+lock = NButton(root, width=110, height=111, background="#f4c343", bd=0, text="LOCK", font=botFont).place(x=630, y=710)
+delete = NButton(root, width=225, height=111, background="#ea5255", bd=0, text="DELETE", font=botFont).place(x=745, y=710)
+pay = NButton(root, width=340, height=111, background="#a5c536", bd=0, text="PAY", font=botFont).place(x=975, y=710)
 #endregion
 #endregion
 
