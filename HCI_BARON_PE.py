@@ -126,7 +126,7 @@ option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="C
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="Save as Order", font=normFont).place(x=745, y=510)
 
-option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="Promotoins", font=normFont).place(x=745, y=610)
+option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="Promotions", font=normFont).place(x=745, y=610)
 #endregion
 
 #region COL 4
@@ -140,13 +140,13 @@ option_price = Label(root, text="$15.00", font=("impact", 12), background="#b7e2
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=860, y=210)
 
-option = NButton(root, width=110, height=97, background="#499bc0", bd=0).place(x=860, y=310)
+option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="Pickup Orders", font=normFont).place(x=860, y=310)
 
-option = NButton(root, width=110, height=97, background="#499bc0", bd=0).place(x=860, y=410)
+option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="Check Gift Card Balance", font=normFont, wraplength=110).place(x=860, y=410)
 
-option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=860, y=510)
+option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="Save as Layaway", font=normFont, wraplength=110).place(x=860, y=510)
 
-option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=860, y=610)
+option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="Coupons", font=normFont).place(x=860, y=610)
 #endregion
 
 #region COL 5
@@ -160,13 +160,13 @@ option_price = Label(root, text="$45.00", font=("impact", 12), background="#b7e2
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=975, y=210)
 
-option = NButton(root, width=110, height=97, background="#499bc0", bd=0).place(x=975, y=310)
+option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="Layaways", font=normFont).place(x=975, y=310)
 
-option = NButton(root, width=110, height=97, background="#499bc0", bd=0).place(x=975, y=410)
+option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="Available Coupons", font=normFont, wraplength=110).place(x=975, y=410)
 
-option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=975, y=510)
+option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="Discount", font=normFont).place(x=975, y=510)
 
-option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=975, y=610)
+option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="Receipt", font=normFont).place(x=975, y=610)
 
 #endregion
 
@@ -181,13 +181,13 @@ option_price = Label(root, text="$25.00", font=("impact", 12), background="#b7e2
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=1090, y=210)
 
-option = NButton(root, width=110, height=97, background="#499bc0", bd=0).place(x=1090, y=310)
+option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="Close Day", font=normFont).place(x=1090, y=310)
 
 option = NButton(root, width=110, height=97, background="#499bc0", bd=0).place(x=1090, y=410)
 
-option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=1090, y=510)
+option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="Tax Exempt", font=normFont).place(x=1090, y=510)
 
-option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=1090, y=610)
+option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="Add Shipping", font=normFont).place(x=1090, y=610)
 #endregion
 
 #region COL 7
@@ -201,11 +201,11 @@ option_price = Label(root, text="$30.00", font=("impact", 12), background="#b7e2
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=1205, y=210)
 
-option = NButton(root, width=110, height=97, background="#499bc0", bd=0).place(x=1205, y=310)
+option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="X-Report", font=normFont).place(x=1205, y=310)
 
 option = NButton(root, width=110, height=97, background="#499bc0", bd=0).place(x=1205, y=410)
 
-option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=1205, y=510)
+option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="Notes", font=normFont).place(x=1205, y=510)
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=1205, y=610)
 #endregion
