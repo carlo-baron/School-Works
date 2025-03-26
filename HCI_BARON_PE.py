@@ -206,7 +206,7 @@ img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=1208, y=113)
 img_box.bind("<Button-1>", lambda e: print("nice"))
 option_price = Label(root, text="$30.00", font=("impact", 12), background="#b7e2f3")
-option_price.place()
+option_price.place(x=1231, y=179)
 option_price.bind("<Button-1>", lambda e: print("nice"))
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=1205, y=210)
