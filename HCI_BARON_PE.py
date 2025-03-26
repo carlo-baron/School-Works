@@ -116,7 +116,9 @@ option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x
 img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=749, y=113)
 img_box.bind("<Button-1>", lambda e: print("nice"))
-option_price = Label(root, text="$20.00", font=("impact", 12), background="#b7e2f3").place(x=772, y=179)
+option_price = Label(root, text="$20.00", font=("impact", 12), background="#b7e2f3")
+option_price.place(x=772, y=179)
+option_price.bind("<Button-1>", lambda e: print("nice"))
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=745, y=210)
 
@@ -136,7 +138,9 @@ option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x
 img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=863, y=113)
 img_box.bind("<Button-1>", lambda e: print("nice"))
-option_price = Label(root, text="$15.00", font=("impact", 12), background="#b7e2f3").place(x=885, y=179)
+option_price = Label(root, text="$15.00", font=("impact", 12), background="#b7e2f3")
+option_price.place(x=885, y=179)
+option_price.bind("<Button-1>", lambda e: print("nice"))
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=860, y=210)
 
@@ -156,7 +160,9 @@ option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x
 img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=978, y=113)
 img_box.bind("<Button-1>", lambda e: print("nice"))
-option_price = Label(root, text="$45.00", font=("impact", 12), background="#b7e2f3").place(x=1001, y=179)
+option_price = Label(root, text="$45.00", font=("impact", 12), background="#b7e2f3")
+option_price.place(x=1001, y=179)
+option_price.bind("<Button-1>", lambda e: print("nice"))
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=975, y=210)
 
@@ -177,7 +183,9 @@ option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x
 img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=1093, y=113)
 img_box.bind("<Button-1>", lambda e: print("nice"))
-option_price = Label(root, text="$25.00", font=("impact", 12), background="#b7e2f3").place(x=1116, y=179)
+option_price = Label(root, text="$25.00", font=("impact", 12), background="#b7e2f3")
+option_price.place(x=1116, y=179)
+option_price.bind("<Button-1>", lambda e: print("nice"))
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=1090, y=210)
 
@@ -197,7 +205,9 @@ option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x
 img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=1208, y=113)
 img_box.bind("<Button-1>", lambda e: print("nice"))
-option_price = Label(root, text="$30.00", font=("impact", 12), background="#b7e2f3").place(x=1232, y=179)
+option_price = Label(root, text="$30.00", font=("impact", 12), background="#b7e2f3")
+option_price.place()
+option_price.bind("<Button-1>", lambda e: print("nice"))
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=1205, y=210)
 
