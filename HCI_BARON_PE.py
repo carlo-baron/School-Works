@@ -144,6 +144,35 @@ def pay():
     change_customer_details(current_customer)
     messagebox.showinfo("Success!", "Payment completed")
     
+def highlight_product(product_list : list):
+    if locked: return
+    
+    global highlight
+    if highlight:
+        clear_highlight()
+        highlight = False
+    elif not highlight:
+        highlight = True
+        clear_highlight()
+        for product in product_list:
+            product.config(bg="#8ab3cf")
+        
+def clear_highlight():
+    for i, product in enumerate(shirts):
+        if i < 1:
+            product.config(bg="#499bc0")
+        else:
+            product.config(bg="#b7e2f3")
+    for i, product in enumerate(dresses):
+        if i < 1:
+            product.config(bg="#499bc0")
+        else:
+            product.config(bg="#b7e2f3")
+    for i, product in enumerate(jeans):
+            if i < 1:
+                product.config(bg="#499bc0")
+            else:
+                product.config(bg="#b7e2f3")
             
 def delete_chosen_products():
     if locked: return
@@ -188,12 +217,15 @@ products = {
 }
 
 chosen_products = dict()
-
 current_customer = list(customers.keys())[0]
 tabs = []
 TAX = 0.1
 REWARD_PER_UNIT = 50
 locked = False
+shirts = []
+dresses = []
+jeans = []
+highlight = False
 #endregion
 
 #region LEFT SIDE
@@ -250,6 +282,8 @@ img_box.bind("<Button-1>", lambda e:add_product("Classic blue jeans"))
 option_price = Label(root, text="$35.00", font=("impact", 12), background="#b7e2f3")
 option_price.place(x=541, y=179)
 option_price.bind("<Button-1>", lambda e:add_product("Classic blue jeans"))
+jeans.append(option)
+jeans.append(option_price)
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=515, y=210)
 
@@ -263,7 +297,9 @@ option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="L
 #endregion
 
 #region COL 2
-option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="Shirts", font=normFont).place(x=630, y=10)
+option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="Shirts", font=normFont, command=lambda: highlight_product(shirts))
+option.place(x=630, y=10)
+shirts.insert(0, option)
 
 option = Frame(root, width=110, height=97, background="#b7e2f3", bd=0)
 option.place(x=630, y=110)
@@ -273,7 +309,9 @@ img_box.place(x=633, y=113)
 img_box.bind("<Button-1>", lambda e:add_product("Red max-dress"))
 option_price = Label(root, text="$50.00", font=("impact", 12), background="#b7e2f3")
 option_price.place(x=656, y=179)
-option_price.bind("<Button-1>", lambda e:add_product("Red max-dress"))
+option_price.bind("<Button-1>", lambda e:add_product("Red max-dresws"))
+dresses.append(option)
+dresses.append(option_price)
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=630, y=210)
 
@@ -287,7 +325,9 @@ option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="C
 #endregion
 
 #region COL 3
-option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="Dresses", font=normFont).place(x=745, y=10)
+option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="Dresses", font=normFont, command=lambda: highlight_product(dresses))
+option.place(x=745, y=10)
+dresses.insert(0, option)
 
 option = Frame(root, width=110, height=97, background="#b7e2f3", bd=0)
 option.place(x=745, y=110)
@@ -298,6 +338,8 @@ img_box.bind("<Button-1>", lambda e:add_product("Gray shirt"))
 option_price = Label(root, text="$20.00", font=("impact", 12), background="#b7e2f3")
 option_price.place(x=772, y=179)
 option_price.bind("<Button-1>", lambda e:add_product("Gray shirt"))
+shirts.append(option)
+shirts.append(option_price)
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=745, y=210)
 
@@ -311,7 +353,9 @@ option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="P
 #endregion
 
 #region COL 4
-option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="Jeans", font=normFont).place(x=860, y=10)
+option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="Jeans", font=normFont, command=lambda: highlight_product(jeans))
+option.place(x=860, y=10)
+jeans.insert(0, option)
 
 option = Frame(root, width=110, height=97, background="#b7e2f3", bd=0)
 option.place(x=860, y=110)
@@ -322,6 +366,8 @@ img_box.bind("<Button-1>", lambda e:add_product("Yellow shirt"))
 option_price = Label(root, text="$15.00", font=("impact", 12), background="#b7e2f3")
 option_price.place(x=885, y=179)
 option_price.bind("<Button-1>", lambda e:add_product("Yellow shirt"))
+shirts.append(option)
+shirts.append(option_price)
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=860, y=210)
 
@@ -346,6 +392,8 @@ img_box.bind("<Button-1>", lambda e:add_product("Beige dress"))
 option_price = Label(root, text="$45.00", font=("impact", 12), background="#b7e2f3")
 option_price.place(x=1001, y=179)
 option_price.bind("<Button-1>", lambda e:add_product("Beige dress"))
+dresses.append(option)
+dresses.append(option_price)
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=975, y=210)
 
@@ -371,6 +419,8 @@ img_box.bind("<Button-1>", lambda e:add_product("White jeans"))
 option_price = Label(root, text="$25.00", font=("impact", 12), background="#b7e2f3")
 option_price.place(x=1116, y=179)
 option_price.bind("<Button-1>", lambda e:add_product("White jeans"))
+jeans.append(option)
+jeans.append(option_price)
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=1090, y=210)
 
@@ -395,6 +445,8 @@ img_box.bind("<Button-1>", lambda e:add_product("Black jeans"))
 option_price = Label(root, text="$30.00", font=("impact", 12), background="#b7e2f3")
 option_price.place(x=1231, y=179)
 option_price.bind("<Button-1>", lambda e:add_product("Black jeans"))
+jeans.append(option)
+jeans.append(option_price)
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=1205, y=210)
 
@@ -453,7 +505,6 @@ total_price.place(x=405, y=710)
 tax_price.place(x=450, y=760)
 net_price.place(x=441, y=790)
 #endregion
-
 
 root.mainloop()
 #endregion
