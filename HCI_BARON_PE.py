@@ -160,6 +160,7 @@ def change_lock_state():
     else:
         locked = True
         lock.config(bg="#b17829")
+#endregion
 
 #region APP
 root = Tk()
