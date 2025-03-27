@@ -78,8 +78,46 @@ def add_product(product):
     else:
         chosen_products[product] = {"Qty" : 1}
     
-    print(chosen_products.items())
-#endregion
+    # print(chosen_products.items())
+    reflect_chosen_products()
+
+def reflect_chosen_products():
+    diff = 33
+    for i, chosen_product in enumerate(chosen_products.keys()):
+        bg = "#ffffff" if i % 2 == 0 else "#999999" 
+        tab_bg = Label(root, width=70, height=2, background=bg)
+        cloth_name = Label(root, text=chosen_product, font=("arial"), background=bg)
+        code = Label(root, text=products[chosen_product]["Code"], font=("arial"), background=bg)
+        qty = Label(root, text=chosen_products[chosen_product]["Qty"], font=("arial"), background=bg)
+        price = Label(root, text=products[chosen_product]["Price"] * chosen_products[chosen_product]["Qty"], font=("arial"), background=bg)
+        
+        if i < 1:
+            tab_bg.place(x=10, y=385)
+            cloth_name.place(x=30, y=390)
+            code.place(x=230, y=390)
+            qty.place(x=350, y=390)
+            price.place(x=450, y=390)
+        else:
+            tab_bg.place(x=10, y=385 + (diff * i))
+            cloth_name.place(x=30, y=390 + (diff * i))
+            code.place(x=230, y=390 + (diff * i))
+            qty.place(x=350, y=390 + (diff * i))
+            price.place(x=450, y=390 + (diff * i))
+            
+        tabs.append(tab_bg)
+        tabs.append(cloth_name)
+        tabs.append(code)
+        tabs.append(qty)
+        tabs.append(price)
+    
+    if len(chosen_products.keys()) <= 0:
+        for widget in tabs:
+            widget.place_forget()
+            
+def delete_chosen_products():
+    chosen_products.clear()
+    for i in range(0,1):
+        reflect_chosen_products()
 
 #region APP
 root = Tk()
@@ -109,6 +147,7 @@ products = {
 chosen_products = dict()
 
 initial_customer = list(customers.keys())[0]
+tabs = []
 #endregion
 
 #region LEFT SIDE
@@ -140,17 +179,17 @@ list_price = Label(root, text="Price", font=("impact"), background="#808080")
 list_line1 = Label(root, font=(1), background="#c6c6c6",height=4)
 list_line2 = Label(root, font=(1), background="#c6c6c6",height=4)
 
-row2_bg = Label(root, width=70, height=2)
-dress = Label(root, text="Red maxi-dress", font=("arial"))
-row2_code = Label(root, text="101", font=("arial"))
-row2_qty = Label(root, text="1", font=("arial"))
-row2_price = Label(root, text="50.00", font=("arial"))
+# row2_bg = Label(root, width=70, height=2)
+# dress = Label(root, text="Red maxi-dress", font=("arial"))
+# row2_code = Label(root, text="101", font=("arial"))
+# row2_qty = Label(root, text="1", font=("arial"))
+# row2_price = Label(root, text="50.00", font=("arial"))
 
-row3_bg = Label(root, background="#999999", width=70, height=2)
-jeans = Label(root, text="Classic blue jeans", font=("arial"), background="#999999")
-row3_code = Label(root, text="0013", font=("arial"), background="#999999")
-row3_qty = Label(root, text="1", font=("arial"), background="#999999")
-row3_price = Label(root, text="35.00", font=("arial"), background="#999999")
+# row3_bg = Label(root, background="#999999", width=70, height=2)
+# jeans = Label(root, text="Classic blue jeans", font=("arial"), background="#999999")
+# row3_code = Label(root, text="0013", font=("arial"), background="#999999")
+# row3_qty = Label(root, text="1", font=("arial"), background="#999999")
+# row3_price = Label(root, text="35.00", font=("arial"), background="#999999")
 
 footer_line = Label(root, background="#c6c6c6", font=("arial", 1), width=490)
 total = Label(root, text="TOTAL", font=("impact", 20))
@@ -339,7 +378,7 @@ botFont = ("impact", 18)
 
 people = NButton(root, width=110, height=111, background="#f4c343", bd=0, text="PEOPLE", font=botFont, command=incomplete_feature).place(x=515, y=710)
 lock = NButton(root, width=110, height=111, background="#f4c343", bd=0, text="LOCK", font=botFont).place(x=630, y=710)
-delete = NButton(root, width=225, height=111, background="#ea5255", bd=0, text="DELETE", font=botFont).place(x=745, y=710)
+delete = NButton(root, width=225, height=111, background="#ea5255", bd=0, text="DELETE", font=botFont, command=delete_chosen_products).place(x=745, y=710)
 pay = NButton(root, width=340, height=111, background="#a5c536", bd=0, text="PAY", font=botFont).place(x=975, y=710)
 #endregion
 #endregion
@@ -371,17 +410,19 @@ list_code.place(x=230, y=355)
 list_qty.place(x=350, y=355)
 list_price.place(x=450, y=355)
 
-row2_bg.place(x=10, y=385)
-dress.place(x=30, y=390)
-row2_code.place(x=230, y=390)
-row2_qty.place(x=350, y=390)
-row2_price.place(x=450, y=390)
+# row2_bg.place(x=10, y=385)
+# dress.place(x=30, y=390)
+# row2_code.place(x=230, y=390)
+# row2_qty.place(x=350, y=390)
+# row2_price.place(x=450, y=390)
 
-row3_bg.place(x=10, y=418)
-jeans.place(x=30, y=423)
-row3_code.place(x=230, y=423)
-row3_qty.place(x=350, y=423)
-row3_price.place(x=450, y=423)
+# row3_bg.place(x=10, y=418)
+# jeans.place(x=30, y=423)
+# row3_code.place(x=230, y=423)
+# row3_qty.place(x=350, y=423)
+# row3_price.place(x=450, y=423)
+
+#difference = 33
 
 footer_line.place(x=10, y=680)
 total.place(x=40, y=710)
