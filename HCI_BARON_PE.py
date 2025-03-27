@@ -65,11 +65,20 @@ class SearchableComboBox():
 #region FUNCTIONS
 def incomplete_feature():
     messagebox.showerror("Error!", "Incomplete Feature")
+
 def change_customer_details(customer):
     name.config(text=customer)
     store_points.config(text=customers[customer]["Store"])
     reward_points.config(text=customers[customer]["Reward"])
     visit_points.config(text=customers[customer]["Visit"])
+
+def add_product(product):
+    if product in chosen_products.keys():
+        chosen_products[product]["Qty"] += 1
+    else:
+        chosen_products[product] = {"Qty" : 1}
+    
+    print(chosen_products.items())
 #endregion
 
 #region APP
@@ -86,6 +95,18 @@ customers = {
     "Mary Davis" : {"Store" : 3, "Reward" : 8000, "Visit" : 30},
     "James Wilson" : {"Store" : 0, "Reward" : 1500, "Visit" : 5},
 }
+
+products = {
+    "Classic blue jeans" : {"Price" : 35, "Code" : "0013"},
+    "Red max-dress" : {"Price" : 50, "Code" : "101"},
+    "Gray shirt" : {"Price" : 20, "Code" : "206"},
+    "Yellow shirt" : {"Price" : 15, "Code" : "305"},
+    "Beige dress" : {"Price" : 45, "Code" : "1030"},
+    "White jeans" : {"Price" : 25, "Code" : "030"},
+    "Black jeans" : {"Price" : 30, "Code" : "225"}
+}
+
+chosen_products = dict()
 
 initial_customer = list(customers.keys())[0]
 #endregion
@@ -149,13 +170,13 @@ option = NButton(root, text="+",width=110, height=97, background="#a5c536", bd=0
 
 option = Frame(root, width=110, height=97, background="#b7e2f3", bd=0)
 option.place(x=515, y=110)
-option.bind("<Button-1>", lambda e: print("nice"))
+option.bind("<Button-1>", lambda e:add_product("Classic blue jeans"))
 img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=518, y=113)
-img_box.bind("<Button-1>", lambda e: print("Nice"))
+img_box.bind("<Button-1>", lambda e:add_product("Classic blue jeans"))
 option_price = Label(root, text="$35.00", font=("impact", 12), background="#b7e2f3")
 option_price.place(x=541, y=179)
-option_price.bind("<Button-1>", lambda e: print("Nietzsche"))
+option_price.bind("<Button-1>", lambda e:add_product("Classic blue jeans"))
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=515, y=210)
 
@@ -173,13 +194,13 @@ option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="S
 
 option = Frame(root, width=110, height=97, background="#b7e2f3", bd=0)
 option.place(x=630, y=110)
-option.bind("<Button-1>", lambda e: print("nice"))
+option.bind("<Button-1>", lambda e:add_product("Red max-dress"))
 img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=633, y=113)
-img_box.bind("<Button-1>", lambda e: print("nice"))
+img_box.bind("<Button-1>", lambda e:add_product("Red max-dress"))
 option_price = Label(root, text="$50.00", font=("impact", 12), background="#b7e2f3")
 option_price.place(x=656, y=179)
-option_price.bind("<Button-1>", lambda e: print("Nice"))
+option_price.bind("<Button-1>", lambda e:add_product("Red max-dress"))
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=630, y=210)
 
@@ -197,13 +218,13 @@ option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="D
 
 option = Frame(root, width=110, height=97, background="#b7e2f3", bd=0)
 option.place(x=745, y=110)
-option.bind("<Button-1>", lambda e: print("nice"))
+option.bind("<Button-1>", lambda e:add_product("Gray shirt"))
 img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=749, y=113)
-img_box.bind("<Button-1>", lambda e: print("nice"))
+img_box.bind("<Button-1>", lambda e:add_product("Gray shirt"))
 option_price = Label(root, text="$20.00", font=("impact", 12), background="#b7e2f3")
 option_price.place(x=772, y=179)
-option_price.bind("<Button-1>", lambda e: print("nice"))
+option_price.bind("<Button-1>", lambda e:add_product("Gray shirt"))
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=745, y=210)
 
@@ -221,13 +242,13 @@ option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="J
 
 option = Frame(root, width=110, height=97, background="#b7e2f3", bd=0)
 option.place(x=860, y=110)
-option.bind("<Button-1>", lambda e: print("nice"))
+option.bind("<Button-1>", lambda e:add_product("Yellow shirt"))
 img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=863, y=113)
-img_box.bind("<Button-1>", lambda e: print("nice"))
+img_box.bind("<Button-1>", lambda e:add_product("Yellow shirt"))
 option_price = Label(root, text="$15.00", font=("impact", 12), background="#b7e2f3")
 option_price.place(x=885, y=179)
-option_price.bind("<Button-1>", lambda e: print("nice"))
+option_price.bind("<Button-1>", lambda e:add_product("Yellow shirt"))
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=860, y=210)
 
@@ -245,13 +266,13 @@ option = NButton(root, width=110, height=97, background="#499bc0", bd=0, borderw
 
 option = Frame(root, width=110, height=97, background="#b7e2f3", bd=0)
 option.place(x=975, y=110)
-option.bind("<Button-1>", lambda e: print("nice"))
+option.bind("<Button-1>", lambda e:add_product("Beige dress"))
 img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=978, y=113)
-img_box.bind("<Button-1>", lambda e: print("nice"))
+img_box.bind("<Button-1>", lambda e:add_product("Beige dress"))
 option_price = Label(root, text="$45.00", font=("impact", 12), background="#b7e2f3")
 option_price.place(x=1001, y=179)
-option_price.bind("<Button-1>", lambda e: print("nice"))
+option_price.bind("<Button-1>", lambda e:add_product("Beige dress"))
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=975, y=210)
 
@@ -270,13 +291,13 @@ option = NButton(root, width=110, height=97, background="#499bc0", bd=0).place(x
 
 option = Frame(root, width=110, height=97, background="#b7e2f3", bd=0)
 option.place(x=1090, y=110)
-option.bind("<Button-1>", lambda e: print("nice"))
+option.bind("<Button-1>", lambda e:add_product("White jeans"))
 img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=1093, y=113)
-img_box.bind("<Button-1>", lambda e: print("nice"))
+img_box.bind("<Button-1>", lambda e:add_product("White jeans"))
 option_price = Label(root, text="$25.00", font=("impact", 12), background="#b7e2f3")
 option_price.place(x=1116, y=179)
-option_price.bind("<Button-1>", lambda e: print("nice"))
+option_price.bind("<Button-1>", lambda e:add_product("White jeans"))
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=1090, y=210)
 
@@ -294,13 +315,13 @@ option = NButton(root, width=110, height=97, background="#499bc0", bd=0).place(x
 
 option = Frame(root, width=110, height=97, background="#b7e2f3", bd=0)
 option.place(x=1205, y=110)
-option.bind("<Button-1>", lambda e: print("nice"))
+option.bind("<Button-1>", lambda e:add_product("Black jeans"))
 img_box = Label(root, width=14, height=4, background="white")
 img_box.place(x=1208, y=113)
-img_box.bind("<Button-1>", lambda e: print("nice"))
+img_box.bind("<Button-1>", lambda e:add_product("Black jeans"))
 option_price = Label(root, text="$30.00", font=("impact", 12), background="#b7e2f3")
 option_price.place(x=1231, y=179)
-option_price.bind("<Button-1>", lambda e: print("nice"))
+option_price.bind("<Button-1>", lambda e:add_product("Black jeans"))
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x=1205, y=210)
 
