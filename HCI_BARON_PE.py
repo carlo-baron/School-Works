@@ -71,6 +71,8 @@ def incomplete_feature():
     messagebox.showerror("Error!", "Incomplete Feature")
 
 def change_customer_details(customer):
+    global current_customer
+    current_customer = customer
     name.config(text=customer)
     store_points.config(text=customers[customer]["Store"])
     reward_points.config(text=customers[customer]["Reward"])
@@ -131,6 +133,17 @@ def update_footer():
     tax_price.config(text=f"{calculated_tax:.2f}")
     net_price.config(text=f"{calculated_net:.2f}")
     
+def pay():
+    if locked: return
+    if len(tabs) < 1: return
+    
+    added_reward = sum(chosen_products[product]["Qty"] for product in chosen_products) * 50
+    customers[current_customer]["Reward"] += added_reward
+    customers[current_customer]["Visit"] += 1
+    delete_chosen_products()
+    change_customer_details(current_customer)
+    messagebox.showinfo("Success!", "Payment completed")
+    
             
 def delete_chosen_products():
     if locked: return
@@ -175,9 +188,10 @@ products = {
 
 chosen_products = dict()
 
-initial_customer = list(customers.keys())[0]
+current_customer = list(customers.keys())[0]
 tabs = []
 TAX = 0.1
+REWARD_PER_UNIT = 50
 locked = False
 #endregion
 
@@ -188,7 +202,7 @@ box = SearchableComboBox(options)
 
 product_entry = Entry(root, width=26, font=("impact"))
 
-name = Label(root, text=f"{initial_customer}", font=("impact", 20))
+name = Label(root, text=f"{current_customer}", font=("impact", 20))
 loyalty = Label(root, text="Loyalty program", font=("Arial", 8))
 
 store = Label(root, text="STORE", font=("impact", 10), fg="#808080")
@@ -399,7 +413,7 @@ people = NButton(root, width=110, height=111, background="#f4c343", bd=0, text="
 lock = NButton(root, width=110, height=111, background="#f4c343", bd=0, text="LOCK", font=botFont, command=change_lock_state)
 lock.place(x=630, y=710)
 delete = NButton(root, width=225, height=111, background="#ea5255", bd=0, text="DELETE", font=botFont, command=delete_chosen_products).place(x=745, y=710)
-pay = NButton(root, width=340, height=111, background="#a5c536", bd=0, text="PAY", font=botFont).place(x=975, y=710)
+pay = NButton(root, width=340, height=111, background="#a5c536", bd=0, text="PAY", font=botFont, command=pay).place(x=975, y=710)
 #endregion
 #endregion
 
