@@ -43,6 +43,8 @@ class SearchableComboBox():
         self.show_dropdown()
 
     def on_select(self, event):
+        if locked: return
+        
         selected_index = self.listbox.curselection()
         if selected_index:
             selected_option = self.listbox.get(selected_index)
@@ -65,6 +67,7 @@ class SearchableComboBox():
 
 #region FUNCTIONS
 def incomplete_feature():
+    if locked: return
     messagebox.showerror("Error!", "Incomplete Feature")
 
 def change_customer_details(customer):
@@ -74,6 +77,8 @@ def change_customer_details(customer):
     visit_points.config(text=customers[customer]["Visit"])
 
 def add_product(product):
+    if locked: return
+    
     if product in chosen_products.keys():
         chosen_products[product]["Qty"] += 1
         chosen_products[product]["Total Price"] = products[product]["Price"] * chosen_products[product]["Qty"]
@@ -128,9 +133,21 @@ def update_footer():
     
             
 def delete_chosen_products():
+    if locked: return
+    
     chosen_products.clear()
     for i in range(0,1):
         reflect_chosen_products()
+        
+def change_lock_state():
+    global locked
+    if locked:
+        locked = False
+        lock.config(bg="#f4c343")
+    else:
+        locked = True
+        lock.config(bg="#b17829")
+    print(f"lock = {locked}")
 
 #region APP
 root = Tk()
@@ -162,6 +179,7 @@ chosen_products = dict()
 initial_customer = list(customers.keys())[0]
 tabs = []
 TAX = 0.1
+locked = False
 #endregion
 
 #region LEFT SIDE
@@ -251,7 +269,7 @@ option = NButton(root, width=110, height=97, background="#499bc0", bd=0, text="S
 
 option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="Save Sale", font=normFont, command=incomplete_feature).place(x=630, y=510)
 
-option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="Cash Drawer", font=normFont, command=lambda: messagebox.showinfo("Success!", "Cash Drawer Opened")).place(x=630, y=610)
+option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0, text="Cash Drawer", font=normFont, command=lambda: locked or messagebox.showinfo("Success!", "Cash Drawer Opened")).place(x=630, y=610)
 #endregion
 
 #region COL 3
@@ -379,7 +397,8 @@ option = NButton(root, width=110, height=97, background="#b7e2f3", bd=0).place(x
 botFont = ("impact", 18)
 
 people = NButton(root, width=110, height=111, background="#f4c343", bd=0, text="PEOPLE", font=botFont, command=incomplete_feature).place(x=515, y=710)
-lock = NButton(root, width=110, height=111, background="#f4c343", bd=0, text="LOCK", font=botFont).place(x=630, y=710)
+lock = NButton(root, width=110, height=111, background="#f4c343", bd=0, text="LOCK", font=botFont, command=change_lock_state)
+lock.place(x=630, y=710)
 delete = NButton(root, width=225, height=111, background="#ea5255", bd=0, text="DELETE", font=botFont, command=delete_chosen_products).place(x=745, y=710)
 pay = NButton(root, width=340, height=111, background="#a5c536", bd=0, text="PAY", font=botFont).place(x=975, y=710)
 #endregion
