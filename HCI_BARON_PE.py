@@ -75,10 +75,10 @@ def change_customer_details(customer):
 def add_product(product):
     if product in chosen_products.keys():
         chosen_products[product]["Qty"] += 1
+        chosen_products[product]["Total Price"] = products[product]["Price"] * chosen_products[product]["Qty"]
     else:
-        chosen_products[product] = {"Qty" : 1}
+        chosen_products[product] = {"Qty" : 1, "Total Price" : products[product]["Price"]}
     
-    # print(chosen_products.items())
     reflect_chosen_products()
 
 def reflect_chosen_products():
@@ -89,7 +89,7 @@ def reflect_chosen_products():
         cloth_name = Label(root, text=chosen_product, font=("arial"), background=bg)
         code = Label(root, text=products[chosen_product]["Code"], font=("arial"), background=bg)
         qty = Label(root, text=chosen_products[chosen_product]["Qty"], font=("arial"), background=bg)
-        price = Label(root, text=products[chosen_product]["Price"] * chosen_products[chosen_product]["Qty"], font=("arial"), background=bg)
+        price = Label(root, text=chosen_products[chosen_product]["Total Price"], font=("arial"), background=bg)
         
         if i < 1:
             tab_bg.place(x=10, y=385)
