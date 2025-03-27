@@ -47,6 +47,7 @@ class SearchableComboBox():
         if selected_index:
             selected_option = self.listbox.get(selected_index)
             change_customer_details(selected_option)
+            delete_chosen_products()
             self.entry.delete(0, END)
             self.entry.insert(0, selected_option)
 
