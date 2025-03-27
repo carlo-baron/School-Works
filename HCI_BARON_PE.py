@@ -114,6 +114,18 @@ def reflect_chosen_products():
         for widget in tabs:
             widget.place_forget()
             
+    update_footer()
+            
+def update_footer():
+    total_price_sum = float(sum(chosen_products[product]["Total Price"] for product in chosen_products))
+    calculated_net = float(total_price_sum / (1 + TAX))
+    calculated_tax = float(total_price_sum - calculated_net)
+    
+    total_price.config(text=f"${total_price_sum:.2f}")
+    tax_price.config(text=f"{calculated_tax:.2f}")
+    net_price.config(text=f"{calculated_net:.2f}")
+    
+            
 def delete_chosen_products():
     chosen_products.clear()
     for i in range(0,1):
@@ -148,6 +160,7 @@ chosen_products = dict()
 
 initial_customer = list(customers.keys())[0]
 tabs = []
+TAX = 0.1
 #endregion
 
 #region LEFT SIDE
@@ -179,25 +192,13 @@ list_price = Label(root, text="Price", font=("impact"), background="#808080")
 list_line1 = Label(root, font=(1), background="#c6c6c6",height=4)
 list_line2 = Label(root, font=(1), background="#c6c6c6",height=4)
 
-# row2_bg = Label(root, width=70, height=2)
-# dress = Label(root, text="Red maxi-dress", font=("arial"))
-# row2_code = Label(root, text="101", font=("arial"))
-# row2_qty = Label(root, text="1", font=("arial"))
-# row2_price = Label(root, text="50.00", font=("arial"))
-
-# row3_bg = Label(root, background="#999999", width=70, height=2)
-# jeans = Label(root, text="Classic blue jeans", font=("arial"), background="#999999")
-# row3_code = Label(root, text="0013", font=("arial"), background="#999999")
-# row3_qty = Label(root, text="1", font=("arial"), background="#999999")
-# row3_price = Label(root, text="35.00", font=("arial"), background="#999999")
-
 footer_line = Label(root, background="#c6c6c6", font=("arial", 1), width=490)
 total = Label(root, text="TOTAL", font=("impact", 20))
 tax = Label(root, text="TAX", font=("Arial", 12))
 net = Label(root, text="NET", font=("Arial", 12))
-total_price = Label(root, text="$85.00", font=("impact", 20))
-tax_price = Label(root, text="8.33", font=("Arial", 12))
-net_price = Label(root, text="76.67", font=("Arial", 12))
+total_price = Label(root, text="$0.00", font=("impact", 20))
+tax_price = Label(root, text="0.00", font=("Arial", 12))
+net_price = Label(root, text="0.00", font=("Arial", 12))
 #endregion
 
 #region RIGHT SIDE
@@ -409,20 +410,6 @@ list_name.place(x=30, y=355)
 list_code.place(x=230, y=355)
 list_qty.place(x=350, y=355)
 list_price.place(x=450, y=355)
-
-# row2_bg.place(x=10, y=385)
-# dress.place(x=30, y=390)
-# row2_code.place(x=230, y=390)
-# row2_qty.place(x=350, y=390)
-# row2_price.place(x=450, y=390)
-
-# row3_bg.place(x=10, y=418)
-# jeans.place(x=30, y=423)
-# row3_code.place(x=230, y=423)
-# row3_qty.place(x=350, y=423)
-# row3_price.place(x=450, y=423)
-
-#difference = 33
 
 footer_line.place(x=10, y=680)
 total.place(x=40, y=710)
